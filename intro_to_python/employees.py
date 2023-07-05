@@ -44,7 +44,7 @@ while True:
         if len(list_of_all_employees)==0:
             print("No employee added yet \n")
         else:
-            print(list_of_all_employees)
+            [print(employee) for employee in list_of_all_employees]
         
     else:
         break
