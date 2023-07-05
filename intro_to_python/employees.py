@@ -28,6 +28,7 @@ def start_menu():
 list_of_all_employees=[]
 
 while True:
+    
     user_input = start_menu()
 
     if user_input == "1":  
@@ -40,7 +41,10 @@ while True:
 
     elif user_input == "2":
         os.system("clear")
-        print(list_of_all_employees)
+        if len(list_of_all_employees)==0:
+            print("No employee added yet \n")
+        else:
+            print(list_of_all_employees)
         
     else:
         break
