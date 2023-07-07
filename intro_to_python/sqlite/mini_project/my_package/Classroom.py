@@ -1,4 +1,5 @@
 from my_package.Eleve import Eleve
+import sqlite3
 
 class Classroom():
 
@@ -7,6 +8,38 @@ class Classroom():
 
     def add_student(self, student):    
         self.students.append(student)
+
+    def init_db(self):
+        # Connect to the database or create a new one if it doesn't exist
+        conn = sqlite3.connect('class.db')
+
+        # Create a cursor object to execute SQL statements
+        cursor = conn.cursor()
+
+        # Create the first table called "students"
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS students (
+                id INTEGER PRIMARY KEY,
+                first_name TEXT NOT NULL,
+                last_name TEXT NOT NULL,
+                age INTEGER,
+                grade FLOAT
+            )
+        ''')
+        conn.commit()
+
+    def add_student_to_db(self, student):
+        conn = sqlite3.connect('class.db')
+        # Create a cursor object to execute SQL statements
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO  students (first_name, last_name, age, grade) 
+            VALUES (?, ?, ?, ?)
+            ''', (student.first_name, student.last_name, student.age, student.grade)
+            )
+        # Commit the changes and close the connection
+        conn.commit()
+        conn.close()
 
     def remove_student(self):
         key_to_match = input("Nom de la clé à utiliser pour la suppression : ")

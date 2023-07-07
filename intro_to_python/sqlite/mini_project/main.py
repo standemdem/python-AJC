@@ -3,6 +3,7 @@ from my_package.Eleve import Eleve
 # from my_package.Individu import Individu
 import random
 import os
+import sqlite3
 random.seed(123)
 
 
@@ -17,6 +18,7 @@ def start_menu():
 
 if __name__=="__main__":
     classroom = Classroom()
+    classroom.init_db()
 
     while True:
         choice = start_menu() 
@@ -28,6 +30,7 @@ if __name__=="__main__":
             general_mean = input("Enter your general mean :")
             student = Eleve(first_name, last_name, birthdate, student_id, general_mean)
             classroom.add_student(student)
+            classroom.add_student_to_db(student)
             os.system("cls")
         elif choice == "2":
             classroom.display_students()
