@@ -6,11 +6,10 @@ class Classroom():
         self.students = []
 
     def add_student(self, student):
+        
         self.students.append(student)
 
     def remove_student(self):
-        # self.students.remove(student)
-
         key_to_match = input("Nom de la clé à utiliser pour la suppression : ")
         value_to_match = input("Valeur de la clé à supprimer : ")
         removed = False
@@ -25,9 +24,6 @@ class Classroom():
 
         if not removed:
             print("There are no students left to remove.")
-
-    def get_students(self):
-        pass
 
     def get_average_grade(self):
         if not self.students :
