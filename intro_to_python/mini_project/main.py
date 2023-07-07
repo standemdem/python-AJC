@@ -15,13 +15,8 @@ def start_menu():
     print(" Press any other key to quit Class Manager")
     return input()
 
-def get_input_from_user():
-    return input()
-
-
 if __name__=="__main__":
     classroom = Classroom()
-    print(classroom.__dict__)
 
     while True:
         choice = start_menu() 
