@@ -29,13 +29,14 @@ if __name__=="__main__":
             student_id = random.randint(1, 523)
             general_mean = input("Enter your general mean :")
             student = Eleve(first_name, last_name, birthdate, student_id, general_mean)
-            classroom.add_student(student)
+            # classroom.add_student(student)
             classroom.add_student_to_db(student)
             os.system("cls")
         elif choice == "2":
             classroom.display_students()
             # Supprimer un élève
-            classroom.remove_student()
+            choice = input("write the id you want to delete")
+            classroom.remove_student(choice)
 
         elif choice == "3":
             os.system("cls")
@@ -44,9 +45,5 @@ if __name__=="__main__":
             os.system("cls")
             classroom.get_average_grade()
         else:
+            classroom.close_connexion()
             break
-
-
-
-
-    print("success") 
